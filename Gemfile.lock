@@ -108,11 +108,11 @@ GEM
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
-    factory_bot (6.2.1)
-      activesupport (>= 5.0.0)
-    factory_bot_rails (6.2.0)
-      factory_bot (~> 6.2.0)
-      railties (>= 5.0.0)
+    factory_bot (6.5.4)
+      activesupport (>= 6.1.0)
+    factory_bot_rails (6.5.0)
+      factory_bot (~> 6.5)
+      railties (>= 6.1.0)
     ffaker (2.21.0)
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
@@ -229,7 +229,7 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.3.0)
-    rdoc (6.14.1)
+    rdoc (6.14.2)
       erb
       psych (>= 4.0.0)
     redis (5.4.0)
@@ -353,7 +353,7 @@ DEPENDENCIES
   brakeman
   capybara
   debug
-  factory_bot_rails (= 6.2.0)
+  factory_bot_rails (= 6.5.0)
   ffaker (= 2.21.0)
   importmap-rails
   jbuilder
