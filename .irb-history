@@ -1,0 +1,129 @@
+user = User.create(email: "samar.s.abdelsalam@gmail.com", name: "samar", time_zone: "Europe/Vienna", user_notification_settings: [UserNotificationsSetting.new( notification_type: "email", due_date_reminder_time: "09:00", send_due_date_reminder: true, due_date_reminder_interval: 1)])
+user = User.create(email: "samar.s.abdelsalam@gmail.com", name: "samar", time_zone: "Europe/Vienna", user_notification_settings: [UserNotificationSetting.new( notification_type: "email", due_date_reminder_time: "09:00", send_due_date_reminder: true, due_date_reminder_interval: 1)])
+user = User.create!(\
+  email: "samar.s.abdelsalam@gmail.com",\
+  name: "Samar",\
+  time_zone: "Europe/Vienna"\
+)
+UserNotificationSetting.create!(\
+  user: user,\
+  notification_type: :email,  # Use symbol matching your enum\
+  send_due_date_reminder: true,\
+  due_date_reminder_interval: 1,\
+  due_date_reminder_time: "09:00"  # String or Time object\
+)
+user = User.create!(\
+  email: "samar.s.abdelsalam@gmail.com",\
+  name: "Samar",\
+  time_zone: "Europe/Vienna"\
+)
+UserNotificationSetting.create!(\
+  user: user,\
+  notification_type: :email,  # Use symbol matching your enum\
+  send_due_date_reminder: true,\
+  due_date_reminder_interval: 1,\
+  due_date_reminder_time: "09:00"  # String or Time object\
+)
+user = User.create!(\
+  email: "samar.s.abdelsalam@gmail.com",\
+  name: "Samar",\
+  time_zone: "Europe/Vienna"\
+)
+UserNotificationSetting.create!(\
+  user: user,\
+  notification_type: :email,  # Use symbol matching your enum\
+  send_due_date_reminder: true,\
+  due_date_reminder_interval: 1,\
+  due_date_reminder_time: "09:00"  # String or Time object\
+)
+ticket = Ticket.create!(\
+  title: "Fix Plumbing Leak",\
+  description: "Water leaking in restroom",\
+  due_date: 2.days.from_now,  # UTC time stored\
+  assigned_user: user,\
+  status: "open"\
+)
+user = User.first
+ticket = Ticket.create!(\
+  title: "Fix Plumbing Leak",\
+  description: "Water leaking in restroom",\
+  due_date: 2.days.from_now,  # UTC time stored\
+  assigned_user: user,\
+  status: "open"\
+)
+# Run the job directly in console\
+DueDateReminderJob.perform_now
+# Run the job directly in console\
+DueDateReminderJob.perform_now
+# Run the job directly in console\
+DueDateReminderJob.perform_now
+# Run the job directly in console\
+DueDateReminderJob.perform_now
+# Run the job directly in console\
+DueDateReminderJob.perform_now
+# Run the job directly in console\
+DueDateReminderJob.perform_now
+# Run the job directly in console\
+DueDateReminderJob.perform_now
+# Run the job directly in console\
+DueDateReminderJob.perform_now
+Sent
+SentReminder.last
+SentReminder.count
+Ticket.last
+Ticket.update(due_date: 1.day.from_now)
+# Run the job directly in console\
+DueDateReminderJob.perform_now
+# Run the job directly in console\
+DueDateReminderJob.perform_now
+# Run the job directly in console\
+DueDateReminderJob.perform_now
+SentReminder.last
+# Run the job directly in console\
+DueDateReminderJob.perform_now
+# Run the job directly in console\
+DueDateReminderJob.perform_now
+SentReminder.last
+SentReminder.last
+SentReminder.last
+# Run the job directly in console\
+DueDateReminderJob.perform_now
+SentReminder.sent_recently?(ticket, setting)
+n
+SentReminder.sent_recently?(ticket, setting)
+n
+ticket,
+ticket
+setting
+n
+n
+SentReminder.last
+c
+SentReminder.sent_recently?(ticket, setting)
+# Run the job directly in console\
+DueDateReminderJob.perform_now
+n
+n
+n
+n
+sent_reminder
+c
+# Run the job directly in console\
+DueDateReminderJob.perform_now
+n
+n
+n
+m
+n
+sent_reminder
+sent_reminder.valid?
+sent_reminder.errors
+c
+# Run the job directly in console\
+DueDateReminderJob.perform_now
+n
+n
+n
+n
+sent_reminder
+c

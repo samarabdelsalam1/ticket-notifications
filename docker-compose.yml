@@ -1,0 +1,95 @@
+version: "3.9"
+
+services:
+  app:
+    &app
+    container_name: ticket-notification
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+      args:
+        APP_USER_ID: ${APP_USER_ID}
+    env_file: .env
+    volumes:
+      - .:/home/ticket-notification-user/ticket-notification
+      - bundle:/bundle
+      - rails_cache:/home/ticket-notification-user/ticket-notification/tmp/cache
+    tmpfs:
+      - /tmp/ticket-notification
+    ports:
+      - "3000:3000"
+    depends_on:
+      - development_db
+      - test_db
+    networks:
+      - ticket-notification_private_network
+    entrypoint: [ "/home/ticket-notification-user/ticket-notification/docker/entrypoint.sh" ]
+    command: [ "rails", "server", "-b", "0.0.0.0", "-p", "3000" ]
+    stdin_open: true
+    tty: true
+
+  development_db:
+    &development_db
+    container_name: ticket-notification_development_db
+    image: postgres:15.3-alpine
+    env_file: .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - development_db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${DEVELOPMENT_DB_NAME}
+      POSTGRES_USER: ${DEVELOPMENT_DB_USERNAME}
+      POSTGRES_PASSWORD: ${DEVELOPMENT_DB_PASSWORD}
+    networks:
+      - ticket-notification_private_network
+    restart: always
+
+  test_db:
+    <<: *development_db
+    container_name: ticket-notification_test_db
+    ports: [ ]
+    environment:
+      POSTGRES_DB: ${TEST_DB_NAME}
+      POSTGRES_USER: ${TEST_DB_USERNAME}
+      POSTGRES_PASSWORD: ${TEST_DB_PASSWORD}
+    volumes:
+      - test_db:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7.0.12-alpine
+    container_name: ticket-notification_redis
+    volumes:
+      - redis_data:/data
+    ports:
+      - "${REDIS_PORT:-16379}:6379"
+    env_file: .env
+    environment:
+      REDIS_DATABASE: 0
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    restart: always
+    networks:
+      - ticket-notification_private_network   
+  worker:
+    <<: *app
+    container_name: ticket-notification_worker
+    command: bash -c "bundle install && bundle exec sidekiq"
+    depends_on:
+      - redis
+      - app
+    ports: [ ]
+    entrypoint: ""
+
+volumes:
+  bundle:
+  rails_cache:
+  redis_data:
+  node_modules:
+  development_db:
+  test_db:
+
+
+networks:
+  ticket-notification_private_network:
+    external: true
