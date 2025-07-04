@@ -61,6 +61,6 @@ group :test do
   gem 'rspec-rails', '6.0.3'
   gem "factory_bot_rails", "6.2.0"
   gem 'ffaker', '2.21.0'
-  gem 'shoulda-matchers', '~> 5.0'
+  gem 'shoulda-matchers', '~> 6.5'
   gem 'timecop', '~> 0.9.10'
 end
