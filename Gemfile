@@ -34,7 +34,7 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 gem 'sidekiq', '7.3.7'
-gem 'sidekiq-scheduler', '5.0.6'
+gem 'sidekiq-scheduler', '6.0.1'
 gem 'pg', '~> 1.1'
 
 group :development, :test do
