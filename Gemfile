@@ -58,7 +58,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
-  gem 'rspec-rails', '6.0.3'
+  gem 'rspec-rails', '8.0.1'
   gem "factory_bot_rails", "6.2.0"
   gem 'ffaker', '2.21.0'
   gem 'shoulda-matchers', '~> 5.0'
